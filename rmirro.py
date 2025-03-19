@@ -536,6 +536,15 @@ class ComputerFile(AbstractFile):
 
 # Determine what to do, and why, when syncing file with given RM/PC representations
 def sync_action_and_reason(rm_file, pc_file, skip=[]):
+    if rm_file:
+        if (
+            rm_file.path().startswith("Ebooks")
+            or rm_file.path().startswith("Notes")
+            or rm_file.path().startswith("Notebook")
+            or rm_file.path().startswith("Presentations")
+        ):
+            return "SKIP", "in --skip"
+
     if (rm_file and rm_file.name() in skip) or (pc_file and pc_file.name() in skip):
         return "SKIP", "in --skip"
 
