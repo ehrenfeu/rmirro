@@ -3,11 +3,9 @@
 import subprocess
 import os
 import json
-import urllib.request
 import uuid
 import time
 import argparse
-import shutil
 
 # directory of this file
 # (e.g. /some/absolute/path/rmirro)
