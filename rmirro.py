@@ -20,7 +20,10 @@ parser.add_argument(
     type=str,
     nargs="?",
     default="remarkable",
-    help='SSH hostname of reMarkable reachable with "ssh [name]" without password (default: remarkable)',
+    help=(
+        'SSH hostname of reMarkable reachable with "ssh [name]" without password '
+        "(default: remarkable)"
+    ),
 )
 parser.add_argument(
     "-r",
@@ -28,7 +31,11 @@ parser.add_argument(
     default=["render_usb.py"],
     nargs="+",
     metavar="EX",
-    help='list of one or more executables EX in this project\'s directory such that "EX infile outfile" renders a reMarkable document with stem infile to the PDF outfile (default: render_usb.py - using the official USB web interface renderer)',
+    help=(
+        "list of one or more executables EX in this project's directory such that \"EX "
+        'infile outfile" renders a reMarkable document with stem infile to the PDF '
+        "outfile (default: render_usb.py - the official USB web interface renderer)"
+    ),
 )
 parser.add_argument(
     "-v", "--verbose", action="store_true", help="print executed shell commands"
@@ -311,7 +318,8 @@ class RemarkableFile(AbstractFile):
             return ""
         return self.metadata()["visibleName"]
 
-    # Return this file's full path as it appears in the visual RM file system (e.g. notes/document.pdf)
+    # Return this file's full path as it appears in the visual RM file system (e.g.
+    # notes/document.pdf)
     def path(self):
         if self.is_root:
             path = ""
